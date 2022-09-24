@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <style>
+      .container {
+        justify-content: center;
+        margin: auto;
+        display: grid;
+        font-size: 50px;
+        text-align: center;
+        box-sizing: border-box;
+        border: 15px solid salmon;
+      }
+
+      button {
+        justify-content: center;
+        align-items: center;
+        width: 25%;
+        padding: 2%;
+      }
+      .greaterThanzero {
+        color: green;
+      }
+
+      .lessThanZero {
+        color: red;
+      }
+
+      .equalToZero {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Counter</h1>
+      <br />
+      <h2 id="numbercount"></h2>
+    </div>
+    <button onclick="decrement()">Decrease</button>
+    <button onclick="zero()">Reset</button>
+    <button onclick="increment()">Increase</button>
+  </body>
+  <script>
+    const totalCount = document.getElementById("numbercount");
+    var count = 0;
+    totalCount.innerHTML = count;
+    function increment() {
+      count++;
+      totalCount.innerHTML = count;
+      changeColor();
+    }
+
+    function decrement() {
+      count--;
+      totalCount.innerHTML = count;
+      changeColor();
+    }
+    function zero() {
+      count = 0;
+      totalCount.innerHTML = count;
+      changeColor();
+    }
+
+    function changeColor() {
+      totalCount.removeAttribute("class");
+      var x = document.getElementById("numbercount").innerHTML;
+      x > 0
+        ? document
+            .getElementById("numbercount")
+            .classList.add("greaterThanzero")
+        : x < 0
+        ? document.getElementById("numbercount").classList.add("lessThanZero")
+        : document.getElementById("numbercount").classList.add("equalToZero");
+    }
+  </script>
+</html>
